@@ -1,0 +1,254 @@
+﻿@model CardModel
+@{
+    ViewData["Title"] = "Ajouter_Rebut";
+}
+
+@section styles{ 
+    .invisible{
+     display: none; 
+    }
+}
+
+<div class="container">
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h2 class="text-themecolor">Ajouter Rebut</h2>
+        </div>
+
+    </div>
+
+    <form method="post" asp-action="addCard">
+        <div class="form-group">
+            <label asp-for="Equipe"></label>
+            <select asp-for="Equipe" class="form-control">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Atelier"></label>
+            <select asp-for="Atelier" class="form-control">
+                <option>CMS</option>
+                <option>Test</option>
+                <option>Integration</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Ligne"></label>
+            <select asp-for="Ligne" class="form-control">
+                <option>L01</option>
+                <option>L02</option>
+                <option>L03</option>
+                <option>L04</option>
+                <option>L05</option>
+                <option>L06</option>
+                <option>L07</option>
+                <option>L08</option>
+                <option>L09</option>
+                <option>Boutrolage</option>
+                <option>Hors Ligne</option>
+                <option>Test</option>
+                <option>Ligne dep</option>
+                <option>Mécanovole</option>
+                <option>Ligne HDD</option>
+                <option>Rework</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Reference"></label>
+            <input asp-for="Reference" class="form-control ref" required>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Designation"></label>
+            <input asp-for="Designation" class="form-control designation" required>
+        </div>
+
+        <div class="form-group">
+
+            <label asp-for="TypeDefaut"></label>
+
+            <div class="row justify-content-between" style=" margin: auto 0.09em;">
+                <div class="col-6" style="padding-left:0px">
+                    <select asp-for="TypeDefaut" class="form-control OpenSelect">
+                        <option>Accessoire endommagé</option>
+                        <option>carte brulée</option>
+                        <option>carte oxydée</option>
+                        <option>chute carte</option>
+                        <option>pts dépannage</option>
+                        <option>pts par terre</option>
+                        <option>crème sèche</option>
+                        <option>cuivre cassé</option>
+                        <option>cuivre gratté</option>
+                        <option>cuivre/carte flambés</option>
+                        <option>décalage cpts</option>
+                        <option>décalage crème</option>
+                        <option>emballage endommagé</option>
+                        <option>excès crème</option>
+                        <option>manque cpts</option>
+                        <option>Point et/ou Pastille arrachée/décollée</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+
+
+
+                <input asp-for="TypeDefaut" class="form-control col-6 EnableMe" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Source"></label>
+            <select asp-for="Source" class="form-control">
+
+                <option>Mlav</option>
+                <option>DEK</option>
+                <option>MP</option>
+                <option>FOUR</option>
+                <option>Encours</option>
+                <option>IM</option>
+                <option>Vague</option>
+                <option>RET</option>
+                <option>TI</option>
+                <option>DEP</option>
+                <option>ASS</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CauseDefaut"></label>
+            <div class="row justify-content-between" style=" margin: auto 0.09em;">
+                <div class="col-6" style="padding-left:0px">
+                    <select asp-for="CauseDefaut" class="form-control OpenSelect">
+                        <option>Convoyeur</option>
+                        <option>Stockage</option>
+                        <option>Autre</option>
+                    </select>
+                </div>
+
+
+
+                <input asp-for="CauseDefaut" class="form-control col-6 EnableMe" disabled>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ActionComm"></label>
+            <textarea asp-for="ActionComm" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="Repartition"></label>
+            <input asp-for="Repartition" class="form-control repart" required>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="RepereTopo"></label>
+            <input asp-for="RepereTopo" class="form-control topo">
+            <span class="text-danger invisible">Ce champs est obligatoire </span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Machine"></label>
+            <input asp-for="Machine" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Qte"></label>
+            <input asp-for="Qte" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="PMP"></label>
+            <input asp-for="PMP" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label asp-for="Responsable"></label>
+            <input asp-for="Responsable" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="EtatCarte"></label>
+            <input asp-for="EtatCarte" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="Operateur"></label>
+            <input asp-for="Operateur" class="form-control">
+        </div>
+        <div class="form-group">
+            <label asp-for="NumSerie"></label>
+            <input asp-for="NumSerie" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-secondary" value="Ajouter" style="background-color: rgba(0,130,255,1) ; color: white">
+        </div>
+
+
+
+
+    </form>
+
+
+</div>
+
+@section Scripts{
+
+    <script>
+        $('select.OpenSelect').on('click', function () {
+
+            if ($(this).val() == 'Autre') {
+
+                $(this).parent().parent().find('input.EnableMe').prop("disabled", false);
+
+          
+
+            }
+            else {
+                $(this).parent().parent().find('input.EnableMe').val('');
+                $(this).parent().parent().find('input.EnableMe').prop("disabled", true);
+
+            }
+        });
+
+        $('input.btn-secondary').click(function () {
+
+            if ($('input.repart').val() == "Rebut Cartes") {
+
+                $('input.topo').prop('required', true);
+                $('span').removeClass('invisible');
+            } else {
+                $('input.topo').prop('required', false);
+                $('span').addClass('invisible'); 
+            }
+        });
+
+        $('input.ref').click(function () {
+
+            $(this).focusout(function () {
+
+                var val = $(this).val();
+                var url = "/Cartes/getDesignation/" + val; 
+                $.ajax({
+                    method: 'GET',
+                    url: url
+
+                }).done(function (msg) {
+
+                    console.log(msg);
+                    if(msg != "Error")
+                    $('input.designation').val(msg); 
+
+
+                }).fail(function () {
+
+                    console.log("failed"); 
+                })
+            })
+
+
+            
+
+        })
+      
+    </script>
+}

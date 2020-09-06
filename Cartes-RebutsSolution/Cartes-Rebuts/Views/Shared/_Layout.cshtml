@@ -1,49 +1,200 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Cartes_Rebuts</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Cartes_Rebuts</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Cartes_Rebuts - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/smollIcon.png">
+    <title>Cartes Rebuts | @ViewData["Title"] </title>
+
+    <link href="~/assets/node_modules/c3-master/c3.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/dist/css/style.css" rel="stylesheet">
+    <!-- Dashboard 1 Page CSS -->
+    <link href="~/dist/css/pages/dashboard1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+    <style>
+        .drop {
+            display: none;
+        }
+
+        @RenderSection("styles", required: false)
+
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<body class="skin-default-dark fixed-layout">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader__figure"></div>
+            <p class="loader__label">Cartes Rebuts</p>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    </div>
+    <div id="main-wrapper">
+
+
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" asp-controller="Cartes" asp-action="Index">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <img src="~/assets/images/logo.png" alt="homepage" class="dark-logo" />
+                            <!-- Light Logo icon -->
+                            <img src="~/assets/images/logo.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item hidden-sm-up"> <a class="nav-link nav-toggler waves-effect waves-light" href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+
+                    </ul>
+
+                </div>
+            </nav>
+        </header>
+
+
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <div class="d-flex no-block nav-text-box align-items-center">
+                <span><img src="../assets/images/logo-dark.png" alt="Home"></span>
+                <a class="waves-effect waves-dark ml-auto hidden-sm-down" href="javascript:void(0)"><i class="ti-menu"></i></a>
+                <a class="nav-toggler waves-effect waves-dark ml-auto hidden-sm-up" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+            </div>
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <!--                        add dropdown menues here -->
+                        <li class="dash-show">
+                            <a class="waves-effect waves-dark" aria-expanded="false"><i class="fas fa-tachometer-alt"></i><span class="hide-menu">Dashboard</span></a>
+                            <ul class="drop">
+                                <li> <a asp-controller="Cartes" asp-action="Index"> Table de base  </a></li>
+                                <li> <a asp-controller="Cartes" asp-action="addCard"> Ajouter un rebut </a></li>
+                            </ul>
+
+                        </li>
+                        <li class="reun-show">
+                            <a class="waves-effect waves-dark"  aria-expanded="false"><i class="fas fa-handshake"></i><span class="hide-menu"></span>Fichier du réunion </a>
+                            <ul class="drop">
+                                <li> <a asp-controller="Cartes" asp-action="Generer_fichier"> Générer le fichier </a></li>
+                            </ul>
+                        </li>
+
+                        <!---------------------------->
+                        <!--Partie authentification -->
+                        <!---------------------------->
+                        @*<li class="acc-show">
+            <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-user-circle"></i><span class="hide-menu">Compte</span></a>
+
+            <ul class="drop">
+                <li> <a href="#"> Déconnexion  </a></li>
+            </ul>
+
+        </li>*@
+
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+
+
+
+
+
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+            <footer class="footer">
+                © 2020 Cartes Rebuts - sagemcom
+            </footer>
+
+        </div>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="~/dist/js/perfect-scrollbar.jquery.min.js"></script>
+        <!--Wave Effects -->
+        <script src="~/dist/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <!--    <script src="dist/js/sidebarmenu.js"></script>-->
+        <!--Custom JavaScript -->
+        <script src="~/dist/js/custom.min.js"></script>
+        <!-- ============================================================== -->
+        <!-- This page plugins -->
+        <!-- ============================================================== -->
+        <script src="~/assets/node_modules/raphael/raphael-min.js"></script>
+        <script src="~/assets/node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <!--c3 JavaScript -->
+        <script src="~/assets/node_modules/d3/d3.min.js"></script>
+        <script src="~/assets/node_modules/c3-master/c3.min.js"></script>
+        <!-- Chart JS -->
+        <script src="~/dist/js/dashboard1.js"></script>
+        <script>
+            $('.dash-show').click(function () {
+
+                $(this).find('ul').toggleClass('drop');
+
+            })
+
+            $('.reun-show').click(function () {
+
+                $(this).find('ul').toggleClass('drop');
+
+            })
+
+             
+            //$('.acc-show').click(function () {
+
+            //    $(this).find('ul').toggleClass('drop');
+
+            //})
+        </script>
+
+
+
+
+        @RenderSection("Scripts", required: false)
 </body>
 </html>

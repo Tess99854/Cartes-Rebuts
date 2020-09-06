@@ -1,0 +1,144 @@
+﻿@model IEnumerable<CardModel>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row page-titles justify-content-between">
+    <div class="col-md-5 align-self-center">
+        <h2 class="text-themecolor">Dashboard</h2>
+    </div>
+    <!-- date and search input -->
+    <!-- Search form -->
+ 
+        <form style="margin-right:1em">
+            <div class="input-group" style="margin-right:5em">
+                <input type="text" class="form-control" placeholder="Search" id="search" style="border-radius: 10px 0px 0px 10px">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit" style="background-color: white; border: 1px solid #DEE2E6;
+                            border-radius: 0px 10px 10px 0px; padding:0.8em">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    
+   
+</div>
+
+@section styles{
+  
+    th{
+        color: black; 
+    }
+    
+}
+
+<div class="row">
+    <!-- column -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h5 class="card-title">Table de base</h5>
+                        <h6 class="card-subtitle">Défiler vers la droite pour voir le reste du tableau</h6>
+                    </div>
+                    <div class="ml-auto">
+                        <!--add rebut-->
+                        <button type="button" class="btn btn-outline-secondary" asp-controller="Cartes" asp-action="addCard">
+                            <a  style="color: black"  asp-controller="Cartes" asp-action="addcard">
+                                Ajouter Rebut
+                                <i style=" color:rgba(0,130,255,1); margin-left:1em" class="fas fa-plus-square"></i>
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th class="text-center">#</th>
+                            <th>DATE</th>
+                            <th>Equipe</th>
+                            <th>Atelier</th>
+                            <th>Ligne</th>
+                            <th>Référence</th>
+                            <th>Designation</th>
+                            <th>Repere Topo</th>
+                            <th>Type du défaut</th>
+                            <th>Source</th>
+                            <th>Cause défaut</th>
+                            <th>Action/Commentaire</th>
+                            <th>Répartition</th>
+                            <th>Machine</th>
+                            <th>Qte</th>
+                            <th>PMP</th>
+                            <th>Valeur</th>
+                            <th>Responsable</th>
+                            <th>Etat de la Carte</th>
+                            <th>Operateur</th>
+                            <th>Produit</th>
+                            <th>N° de cde</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (CardModel card in Model)
+                        {
+                            <tr>
+                                <td class="text-center">@card.Id</td>
+                                <td class="txt-oflo">@card.Date</td>
+                                <td class="txt-oflo">@card.Equipe</td>
+                                <td class="txt-oflo">@card.Atelier</td>
+                                <td class="txt-oflo">@card.Ligne</td>
+                                <td class="txt-oflo">@card.Reference</td>
+                                <td class="txt-oflo">@card.Designation</td>
+                                <td class="txt-oflo">@card.RepereTopo</td>
+                                <td class="txt-oflo">@card.TypeDefaut</td>
+                                <td class="txt-oflo">@card.Source</td>
+                                <td class="txt-oflo">@card.CauseDefaut</td>
+                                <td class="txt-oflo">@card.ActionComm</td>
+                                <td class="txt-oflo">@card.Repartition</td>
+                                <td class="txt-oflo">@card.Machine</td>
+                                <td class="txt-oflo">@card.Qte</td>
+                                <td class="txt-oflo">@card.PMP</td>
+                                <td class="txt-oflo">@card.Valeur</td>
+                                <td class="txt-oflo">@card.Responsable</td>
+                                <td class="txt-oflo">@card.EtatCarte</td>
+                                <td class="txt-oflo">@card.Operateur</td>
+                                <td class="txt-oflo">@card.Produit</td>
+                                <td class="txt-oflo">@card.NumSerie</td>
+
+
+                            </tr>
+                        }
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+        $("input#search").keyup(function () {
+            var input = $(this);
+            $('tbody tr').each(function () {
+                if ($(this).text().toLowerCase().indexOf(input.val().toLowerCase()) > -1) {
+
+                    $(this).show();
+
+
+                } else {
+                    $(this).hide();
+                }
+            })
+        })
+    </script>
+}
